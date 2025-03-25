@@ -2,6 +2,8 @@ homepage: "https://www.accessiweb.it"
 documentation: "https://www.accessiweb.it/tagmanager"
 versions:
   - sha: 8f813143c7656395c019491f39a25e7856a6dedd
+    changeNotes: Update template fix inject script
+  - sha: 8f813143c7656395c019491f39a25e7856a6dedd
     changeNotes: Update template with encodeUri and encodeUriComponent
   - sha: 3a4bb66447e6b426462a2ff3c0b89f8136234514
     changeNotes: Update template with API Tag Manager
