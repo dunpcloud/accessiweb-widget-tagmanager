@@ -282,7 +282,7 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://www.accessiweb.it/widget/acsw.js"
+                "string": "https://www.accessiweb.it/widget/acsw.js*"
               }
             ]
           }
