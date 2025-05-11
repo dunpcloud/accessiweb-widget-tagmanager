@@ -1,6 +1,8 @@
 homepage: "https://www.accessiweb.it"
 documentation: "https://www.accessiweb.it/tagmanager"
 versions:
+  - sha: 550e2b5f318566f373e35d9905c994045f6c3be4
+    changeNotes: Move the call to data.gtmOnSuccess() into the injectScript success callback
   - sha: 08d19f6140873c981dcff76f548c376bb6e41eff
     changeNotes: Update template fix inject script
   - sha: 8f813143c7656395c019491f39a25e7856a6dedd
