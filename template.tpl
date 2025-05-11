@@ -204,12 +204,9 @@ function main() {
         IconSize: data.IconSize
     });
 
-    logToConsole('Widget AccessiWeb configurato correttamente');
+    logToConsole('Configurazione salvata correttamente in templateStorage');
 
-    // Chiamata a gtmOnSuccess
-    data.gtmOnSuccess();
-
-    // Costruisco l'URL con parametri definiti
+    // Costruisco l'URL con i parametri
     let scriptUrl = encodeUri('https://www.accessiweb.it/widget/acsw.js');
     const params = [
         { key: 'LicenseKey', value: data.LicenseKey },
@@ -232,12 +229,13 @@ function main() {
         scriptUrl += '?' + queryString;
     }
 
-    // Carico lo script utilizzando l'API injectScript
+    // Carico lo script e gestisco il successo o il fallimento
     injectScript(scriptUrl, () => {
         logToConsole('Script acsw.js caricato con successo');
+        data.gtmOnSuccess();
     }, () => {
         logToConsole('Errore: impossibile caricare lo script acsw.js');
-        data.gtmOnFailure(); 
+        data.gtmOnFailure();
     });
 }
 
