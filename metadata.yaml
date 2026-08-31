@@ -1,6 +1,8 @@
 homepage: "https://www.accessiweb.it"
 documentation: "https://www.accessiweb.it/tagmanager"
 versions:
+  - sha: 65431bcee9f375a8b3c86aa100861b4a801e5b46
+    changeNotes: Add current widget configuration, secure initialization, and duplicate-load protection.
   - sha: 550e2b5f318566f373e35d9905c994045f6c3be4
     changeNotes: Move the call to data.gtmOnSuccess() into the injectScript success callback
   - sha: 08d19f6140873c981dcff76f548c376bb6e41eff
