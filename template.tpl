@@ -14,6 +14,11 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "AccessiWeb Widget",
+  "categories": [
+    "UTILITY",
+    "PERSONALIZATION",
+    "TAG_MANAGEMENT"
+  ],
   "brand": {
     "id": "brand_dummy",
     "displayName": "dunp scpl",
@@ -30,154 +35,337 @@ ___TEMPLATE_PARAMETERS___
 
 [
   {
-    "type": "TEXT",
-    "name": "LicenseKey",
-    "displayName": "LicenseKey",
-    "simpleValueType": true,
-    "help": "Widget LicenseKey"
-  },
-  {
-    "type": "TEXT",
-    "name": "PrimaryColor",
-    "displayName": "PrimaryColor",
-    "simpleValueType": true,
-    "valueValidators": [
+    "type": "GROUP",
+    "name": "licenseGroup",
+    "displayName": "Licenza AccessiWeb",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
       {
-        "type": "REGEX",
-        "args": [
-          "^#(?:[0-9a-fA-F]{3}){1,2}$"
+        "type": "TEXT",
+        "name": "LicenseKey",
+        "displayName": "License Key",
+        "simpleValueType": true,
+        "help": "Chiave obbligatoria associata al dominio autorizzato nella tua area riservata AccessiWeb.",
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
         ]
       }
-    ],
-    "help": "Widget primary color",
-    "valueUnit": "hex color",
-    "defaultValue": "#136ef8"
+    ]
   },
   {
-    "type": "SELECT",
-    "name": "PositionX",
-    "displayName": "PositionX",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "appearanceGroup",
+    "displayName": "Aspetto e posizione",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
       {
-        "value": "left",
-        "displayValue": "left"
+        "type": "TEXT",
+        "name": "PrimaryColor",
+        "displayName": "Colore principale",
+        "simpleValueType": true,
+        "valueValidators": [
+          {
+            "type": "REGEX",
+            "args": [
+              "^#[0-9a-fA-F]{6}$"
+            ]
+          }
+        ],
+        "help": "Colore esadecimale nel formato #RRGGBB.",
+        "valueUnit": "hex",
+        "defaultValue": "#0066CC"
       },
       {
-        "value": "right",
-        "displayValue": "right"
-      }
-    ],
-    "simpleValueType": true,
-    "help": "Widget horizontal alignment",
-    "defaultValue": "left"
-  },
-  {
-    "type": "SELECT",
-    "name": "PositionY",
-    "displayName": "PositionY",
-    "macrosInSelect": false,
-    "selectItems": [
-      {
-        "value": "bottom",
-        "displayValue": "bottom"
+        "type": "SELECT",
+        "name": "PositionX",
+        "displayName": "Posizione orizzontale",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "left",
+            "displayValue": "Sinistra"
+          },
+          {
+            "value": "right",
+            "displayValue": "Destra"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "left"
       },
       {
-        "value": "top",
-        "displayValue": "top"
-      }
-    ],
-    "simpleValueType": true,
-    "help": "Widget vertical alignment",
-    "defaultValue": "bottom"
-  },
-  {
-    "type": "TEXT",
-    "name": "OffsetX",
-    "displayName": "OffsetX",
-    "simpleValueType": true,
-    "valueHint": "10",
-    "help": "Widget horizontal offset",
-    "defaultValue": 10,
-    "valueValidators": [
+        "type": "TEXT",
+        "name": "OffsetX",
+        "displayName": "Distanza orizzontale",
+        "simpleValueType": true,
+        "defaultValue": "10",
+        "valueValidators": [
+          {
+            "type": "REGEX",
+            "args": [
+              "^(?:0|[1-9][0-9]{0,3})$"
+            ]
+          }
+        ],
+        "help": "Numero intero compreso tra 0 e 9999."
+      },
       {
-        "type": "POSITIVE_NUMBER"
+        "type": "SELECT",
+        "name": "UnitX",
+        "displayName": "Unità distanza orizzontale",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "px",
+            "displayValue": "Pixel (px)"
+          },
+          {
+            "value": "%",
+            "displayValue": "Percentuale (%)"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "px"
+      },
+      {
+        "type": "SELECT",
+        "name": "PositionY",
+        "displayName": "Posizione verticale",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "bottom",
+            "displayValue": "In basso"
+          },
+          {
+            "value": "top",
+            "displayValue": "In alto"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "bottom"
+      },
+      {
+        "type": "TEXT",
+        "name": "OffsetY",
+        "displayName": "Distanza verticale",
+        "simpleValueType": true,
+        "defaultValue": "10",
+        "valueValidators": [
+          {
+            "type": "REGEX",
+            "args": [
+              "^(?:0|[1-9][0-9]{0,3})$"
+            ]
+          }
+        ],
+        "help": "Numero intero compreso tra 0 e 9999."
+      },
+      {
+        "type": "SELECT",
+        "name": "UnitY",
+        "displayName": "Unità distanza verticale",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "px",
+            "displayValue": "Pixel (px)"
+          },
+          {
+            "value": "%",
+            "displayValue": "Percentuale (%)"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "px"
+      },
+      {
+        "type": "SELECT",
+        "name": "IconSize",
+        "displayName": "Dimensione icona",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "small",
+            "displayValue": "Piccola"
+          },
+          {
+            "value": "medium",
+            "displayValue": "Media"
+          },
+          {
+            "value": "large",
+            "displayValue": "Grande"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "medium"
+      },
+      {
+        "type": "SELECT",
+        "name": "IconShape",
+        "displayName": "Forma icona",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "round",
+            "displayValue": "Cerchio"
+          },
+          {
+            "value": "square",
+            "displayValue": "Quadrato"
+          },
+          {
+            "value": "rounded",
+            "displayValue": "Arrotondato"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "round"
+      },
+      {
+        "type": "TEXT",
+        "name": "IconRadius",
+        "displayName": "Raggio angoli icona",
+        "simpleValueType": true,
+        "defaultValue": "12",
+        "valueValidators": [
+          {
+            "type": "REGEX",
+            "args": [
+              "^(?:[0-9]|[1-4][0-9]|50)$"
+            ]
+          }
+        ],
+        "valueUnit": "px",
+        "help": "Numero intero tra 0 e 50, utilizzato con la forma Arrotondato.",
+        "enablingConditions": [
+          {
+            "paramName": "IconShape",
+            "paramValue": "rounded",
+            "type": "EQUALS"
+          }
+        ]
       }
     ]
   },
   {
-    "type": "TEXT",
-    "name": "OffsetY",
-    "displayName": "OffsetY",
-    "simpleValueType": true,
-    "valueHint": "10",
-    "help": "Widget vertical offset",
-    "defaultValue": 10,
-    "valueValidators": [
+    "type": "GROUP",
+    "name": "informationGroup",
+    "displayName": "Dichiarazione di accessibilità",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "type": "POSITIVE_NUMBER"
+        "type": "TEXT",
+        "name": "CustomInfoLink",
+        "displayName": "URL dichiarazione di accessibilità",
+        "simpleValueType": true,
+        "valueHint": "https://www.esempio.it/dichiarazione-accessibilita",
+        "help": "URL assoluto opzionale. Se vuoto, il widget mostra il testo informativo predefinito."
+      },
+      {
+        "type": "SELECT",
+        "name": "TargetInfoLink",
+        "displayName": "Apertura link",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "self",
+            "displayValue": "Stessa finestra"
+          },
+          {
+            "value": "blank",
+            "displayValue": "Nuova finestra"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "self"
       }
     ]
   },
   {
-    "type": "SELECT",
-    "name": "UnitX",
-    "displayName": "UnitX",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "advancedGroup",
+    "displayName": "Trigger e impostazioni avanzate",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "value": "px",
-        "displayValue": "px"
+        "type": "TEXT",
+        "name": "Trigger",
+        "displayName": "Trigger personalizzato",
+        "simpleValueType": true,
+        "valueHint": "#apri-widget",
+        "help": "Selettore CSS opzionale dell'elemento che deve aprire il widget."
       },
       {
-        "value": "%",
-        "displayValue": "%"
+        "type": "TEXT",
+        "name": "TriggerKey",
+        "displayName": "Scorciatoia tastiera",
+        "simpleValueType": true,
+        "defaultValue": "alt+a",
+        "help": "Combinazione di tasti, ad esempio alt+a oppure ctrl+shift+w.",
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
+        ]
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "HideButton",
+        "checkboxText": "Nascondi il bottone standard del widget",
+        "simpleValueType": true,
+        "defaultValue": false,
+        "help": "Usare solo quando è stato configurato un trigger personalizzato accessibile."
       }
-    ],
-    "simpleValueType": true,
-    "help": "Widget horizontal offest unit",
-    "defaultValue": "px"
+    ]
   },
   {
-    "type": "SELECT",
-    "name": "UnitY",
-    "displayName": "UnitY",
-    "macrosInSelect": false,
-    "selectItems": [
+    "type": "GROUP",
+    "name": "whiteLabelGroup",
+    "displayName": "White Label - piano Widget Large",
+    "groupStyle": "ZIPPY_CLOSED",
+    "subParams": [
       {
-        "value": "px",
-        "displayValue": "px"
+        "type": "LABEL",
+        "name": "whiteLabelNotice",
+        "displayName": "Questi parametri vengono applicati solamente alle licenze del piano Widget Large."
       },
       {
-        "value": "%",
-        "displayValue": "%"
+        "type": "TEXT",
+        "name": "WlTitle",
+        "displayName": "Titolo pannello",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "WlAccLabel",
+        "displayName": "Etichetta Accessibilità",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "WlInfoText",
+        "displayName": "Testo informativo",
+        "simpleValueType": true,
+        "help": "Testo mostrato quando non è configurato un link alla Dichiarazione di accessibilità."
+      },
+      {
+        "type": "TEXT",
+        "name": "WlFooterText",
+        "displayName": "Testo footer",
+        "simpleValueType": true
+      },
+      {
+        "type": "TEXT",
+        "name": "WlFooterLink",
+        "displayName": "Link footer",
+        "simpleValueType": true,
+        "valueHint": "https://www.esempio.it"
       }
-    ],
-    "simpleValueType": true,
-    "help": "Widget vertical offest unit",
-    "defaultValue": "px"
-  },
-  {
-    "type": "SELECT",
-    "name": "IconSize",
-    "displayName": "IconSize",
-    "macrosInSelect": false,
-    "selectItems": [
-      {
-        "value": "small",
-        "displayValue": "small"
-      },
-      {
-        "value": "medium",
-        "displayValue": "medium"
-      },
-      {
-        "value": "large",
-        "displayValue": "large"
-      }
-    ],
-    "simpleValueType": true,
-    "help": "widget icon size"
+    ]
   }
 ]
 
@@ -185,61 +373,73 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 
 const injectScript = require('injectScript');
+const callInWindow = require('callInWindow');
+const queryPermission = require('queryPermission');
 const logToConsole = require('logToConsole');
 const templateStorage = require('templateStorage');
-const encodeUri = require('encodeUri');
-const encodeUriComponent = require('encodeUriComponent');
 
-function main() {
-    // Memorizzo la configurazione del widget in templateStorage
-    templateStorage.setItem('acswConfig', {
-        LicenseKey: data.LicenseKey,
-        PrimaryColor: data.PrimaryColor,
-        PositionX: data.PositionX,
-        PositionY: data.PositionY,
-        OffsetX: data.OffsetX,
-        OffsetY: data.OffsetY,
-        UnitX: data.UnitX,
-        UnitY: data.UnitY,
-        IconSize: data.IconSize
-    });
+const SCRIPT_URL = 'https://www.accessiweb.it/widget/acsw.js';
+const STORAGE_KEY = 'accessiwebWidgetInitialized';
 
-    logToConsole('Configurazione salvata correttamente in templateStorage');
+const valueOrDefault = function(value, defaultValue) {
+  return value === undefined || value === null || value === '' ? defaultValue : value;
+};
 
-    // Costruisco l'URL con i parametri
-    let scriptUrl = encodeUri('https://www.accessiweb.it/widget/acsw.js');
-    const params = [
-        { key: 'LicenseKey', value: data.LicenseKey },
-        { key: 'PrimaryColor', value: data.PrimaryColor },
-        { key: 'PositionX', value: data.PositionX },
-        { key: 'PositionY', value: data.PositionY },
-        { key: 'OffsetX', value: data.OffsetX },
-        { key: 'OffsetY', value: data.OffsetY },
-        { key: 'UnitX', value: data.UnitX },
-        { key: 'UnitY', value: data.UnitY },
-        { key: 'IconSize', value: data.IconSize }
-    ];
-
-    const queryString = params
-        .filter(param => param.value !== undefined && param.value !== null)
-        .map(param => param.key + '=' + encodeUriComponent(param.value))
-        .join('&');
-
-    if (queryString) {
-        scriptUrl += '?' + queryString;
-    }
-
-    // Carico lo script e gestisco il successo o il fallimento
-    injectScript(scriptUrl, () => {
-        logToConsole('Script acsw.js caricato con successo');
-        data.gtmOnSuccess();
-    }, () => {
-        logToConsole('Errore: impossibile caricare lo script acsw.js');
-        data.gtmOnFailure();
-    });
+if (!data.LicenseKey) {
+  logToConsole('AccessiWeb: License Key mancante');
+  data.gtmOnFailure();
+  return;
 }
 
-main();
+if (templateStorage.getItem(STORAGE_KEY)) {
+  logToConsole('AccessiWeb: widget già inizializzato in questa pagina');
+  data.gtmOnSuccess();
+  return;
+}
+
+const config = {
+  LicenseKey: data.LicenseKey,
+  PrimaryColor: valueOrDefault(data.PrimaryColor, '#0066CC'),
+  PositionX: valueOrDefault(data.PositionX, 'left'),
+  PositionY: valueOrDefault(data.PositionY, 'bottom'),
+  OffsetX: valueOrDefault(data.OffsetX, '10'),
+  OffsetY: valueOrDefault(data.OffsetY, '10'),
+  UnitX: valueOrDefault(data.UnitX, 'px'),
+  UnitY: valueOrDefault(data.UnitY, 'px'),
+  IconSize: valueOrDefault(data.IconSize, 'medium'),
+  IconShape: valueOrDefault(data.IconShape, 'round'),
+  IconRadius: valueOrDefault(data.IconRadius, '12'),
+  CustomInfoLink: valueOrDefault(data.CustomInfoLink, ''),
+  TargetInfoLink: valueOrDefault(data.TargetInfoLink, 'self'),
+  Trigger: valueOrDefault(data.Trigger, ''),
+  TriggerKey: valueOrDefault(data.TriggerKey, 'alt+a'),
+  HideButton: data.HideButton === true,
+  WlTitle: valueOrDefault(data.WlTitle, ''),
+  WlAccLabel: valueOrDefault(data.WlAccLabel, ''),
+  WlInfoText: valueOrDefault(data.WlInfoText, ''),
+  WlFooterText: valueOrDefault(data.WlFooterText, ''),
+  WlFooterLink: valueOrDefault(data.WlFooterLink, '')
+};
+
+const onLoad = function() {
+  if (!queryPermission('access_globals', 'execute', 'acsw.init')) {
+    logToConsole('AccessiWeb: permesso di esecuzione acsw.init non disponibile');
+    data.gtmOnFailure();
+    return;
+  }
+
+  callInWindow('acsw.init', config);
+  templateStorage.setItem(STORAGE_KEY, true);
+  logToConsole('AccessiWeb: widget inizializzato correttamente');
+  data.gtmOnSuccess();
+};
+
+const onFailure = function() {
+  logToConsole('AccessiWeb: impossibile caricare acsw.js');
+  data.gtmOnFailure();
+};
+
+injectScript(SCRIPT_URL, onLoad, onFailure, SCRIPT_URL);
 
 
 ___WEB_PERMISSIONS___
@@ -280,7 +480,68 @@ ___WEB_PERMISSIONS___
             "listItem": [
               {
                 "type": 1,
-                "string": "https://www.accessiweb.it/widget/acsw.js*"
+                "string": "https://www.accessiweb.it/widget/acsw.js"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "clientAnnotations": {
+      "isEditedByUser": true
+    },
+    "isRequired": true
+  },
+  {
+    "instance": {
+      "key": {
+        "publicId": "access_globals",
+        "versionId": "1"
+      },
+      "param": [
+        {
+          "key": "keys",
+          "value": {
+            "type": 2,
+            "listItem": [
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "key"
+                  },
+                  {
+                    "type": 1,
+                    "string": "read"
+                  },
+                  {
+                    "type": 1,
+                    "string": "write"
+                  },
+                  {
+                    "type": 1,
+                    "string": "execute"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "acsw.init"
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": false
+                  },
+                  {
+                    "type": 8,
+                    "boolean": true
+                  }
+                ]
               }
             ]
           }
@@ -308,21 +569,120 @@ ___WEB_PERMISSIONS___
 ___TESTS___
 
 scenarios:
-- name: Test 0000
+- name: Inizializza il widget con la configurazione completa
   code: |-
-    const mockData = {
-      // Mocked field values
+    let storage = {};
+    mockObject('templateStorage', {
+      getItem: key => storage[key],
+      setItem: (key, value) => storage[key] = value
+    });
+    mock('queryPermission', true);
+    mock('injectScript', (url, onSuccess) => onSuccess());
+
+    const expected = {
+      LicenseKey: 'ACSW-TEST',
+      PrimaryColor: '#0066CC',
+      PositionX: 'right',
+      PositionY: 'bottom',
+      OffsetX: '20',
+      OffsetY: '30',
+      UnitX: 'px',
+      UnitY: '%',
+      IconSize: 'large',
+      IconShape: 'rounded',
+      IconRadius: '16',
+      CustomInfoLink: 'https://example.com/accessibility',
+      TargetInfoLink: 'self',
+      Trigger: '#accessibility',
+      TriggerKey: 'alt+w',
+      HideButton: true,
+      WlTitle: 'Accessibilità',
+      WlAccLabel: 'Informazioni',
+      WlInfoText: 'Testo informativo',
+      WlFooterText: 'Example',
+      WlFooterLink: 'https://example.com'
     };
 
-    // Call runCode to run the template's code.
-    runCode(mockData);
+    runCode(expected);
 
-    // Verify that the tag finished successfully.
+    assertApi('injectScript').wasCalled();
+    assertApi('callInWindow').wasCalledWith('acsw.init', expected);
+    assertApi('gtmOnSuccess').wasCalled();
+    assertApi('gtmOnFailure').wasNotCalled();
+
+- name: Usa i valori predefiniti per i campi opzionali
+  code: |-
+    let storage = {};
+    mockObject('templateStorage', {
+      getItem: key => storage[key],
+      setItem: (key, value) => storage[key] = value
+    });
+    mock('queryPermission', true);
+    mock('injectScript', (url, onSuccess) => onSuccess());
+
+    runCode({LicenseKey: 'ACSW-TEST'});
+
+    assertApi('callInWindow').wasCalledWith('acsw.init', {
+      LicenseKey: 'ACSW-TEST',
+      PrimaryColor: '#0066CC',
+      PositionX: 'left',
+      PositionY: 'bottom',
+      OffsetX: '10',
+      OffsetY: '10',
+      UnitX: 'px',
+      UnitY: 'px',
+      IconSize: 'medium',
+      IconShape: 'round',
+      IconRadius: '12',
+      CustomInfoLink: '',
+      TargetInfoLink: 'self',
+      Trigger: '',
+      TriggerKey: 'alt+a',
+      HideButton: false,
+      WlTitle: '',
+      WlAccLabel: '',
+      WlInfoText: '',
+      WlFooterText: '',
+      WlFooterLink: ''
+    });
+    assertApi('gtmOnSuccess').wasCalled();
+
+- name: Segnala errore quando manca la License Key
+  code: |-
+    runCode({LicenseKey: ''});
+
+    assertApi('injectScript').wasNotCalled();
+    assertApi('callInWindow').wasNotCalled();
+    assertApi('gtmOnFailure').wasCalled();
+
+- name: Segnala errore quando lo script non viene caricato
+  code: |-
+    let storage = {};
+    mockObject('templateStorage', {
+      getItem: key => storage[key],
+      setItem: (key, value) => storage[key] = value
+    });
+    mock('injectScript', (url, onSuccess, onFailure) => onFailure());
+
+    runCode({LicenseKey: 'ACSW-TEST'});
+
+    assertApi('callInWindow').wasNotCalled();
+    assertApi('gtmOnFailure').wasCalled();
+
+- name: Evita inizializzazioni duplicate nella stessa pagina
+  code: |-
+    mockObject('templateStorage', {
+      getItem: key => true,
+      setItem: (key, value) => {}
+    });
+
+    runCode({LicenseKey: 'ACSW-TEST'});
+
+    assertApi('injectScript').wasNotCalled();
+    assertApi('callInWindow').wasNotCalled();
     assertApi('gtmOnSuccess').wasCalled();
 
 
 ___NOTES___
 
-Created on 31/10/2024, 17:07:07
-
-
+Updated for AccessiWeb Widget 1.2.0 on 31/08/2026.
